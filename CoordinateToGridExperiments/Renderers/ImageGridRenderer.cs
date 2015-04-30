@@ -4,7 +4,7 @@ namespace CoordinateToGridExperiments.Renderers
 {
     class ImageGridRenderer : GridRenderer<Image>
     {
-        private class Builder : IGridBuilder<Image>
+        private class Builder : IGridBuilder
         {
             private static readonly StringFormat rowFormat = new StringFormat(StringFormatFlags.FitBlackBox | StringFormatFlags.DirectionVertical)
             {
@@ -81,7 +81,7 @@ namespace CoordinateToGridExperiments.Renderers
             }
         }
 
-        protected override IGridBuilder<Image> GenerateBuilder()
+        protected override IGridBuilder GenerateBuilder()
         {
             return new Builder();
         }

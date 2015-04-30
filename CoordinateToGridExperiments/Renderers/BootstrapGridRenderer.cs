@@ -6,7 +6,7 @@ namespace CoordinateToGridExperiments.Renderers
 {
     class BootstrapGridRenderer :GridRenderer<string>
     {      
-        private class Builder : IGridBuilder<string>
+        private class Builder : IGridBuilder
         {
             private StringBuilder builder;
 
@@ -64,7 +64,7 @@ namespace CoordinateToGridExperiments.Renderers
             }
         }
 
-        protected override IGridBuilder<string> GenerateBuilder()
+        protected override IGridBuilder GenerateBuilder()
         {
             return new Builder();
         }        

@@ -7,6 +7,18 @@ namespace CoordinateToGridExperiments.Renderers
 {
     abstract class GridRenderer<T> : Renderer<Grid,T>
     {
+        public interface IGridBuilder : IDisposable
+        {
+            void BeginGrid(Grid grid, Size size);
+            void BeginRow(int index, Rectangle boundries);
+            void BeginColumn(int index, Rectangle boundries);
+            void DrawInnerGrid(T innerGrid, Rectangle boundries);
+            void DrawComponent(Component component, Rectangle boundries);
+            void EndColumn(int index, Rectangle boundries);
+            void EndRow(int index, Rectangle boundries);
+            T EndGrid();
+        }
+
         protected virtual bool UseSizeAsRatio { get { return false; } }
 
         public override T Render(Grid grid, Size size)
@@ -48,7 +60,7 @@ namespace CoordinateToGridExperiments.Renderers
             }
         }
 
-        protected abstract IGridBuilder<T> GenerateBuilder();
+        protected abstract IGridBuilder GenerateBuilder();
 
         protected virtual int[] CalculateColumnWidths(Grid grid, ref Size size)
         {
