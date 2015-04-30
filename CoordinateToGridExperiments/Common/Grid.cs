@@ -17,7 +17,7 @@ namespace CoordinateToGridExperiments
         public Size Size { get; private set; }
         public List<Boundry> Rows { get; private set; }
         public List<Boundry> Columns { get; private set; }
-        public IEnumerable<Component> Components { get { return this.items.Values.OfType<Component>(); } }
+        public IEnumerable<Component> Components { get { return this.items.Values.OfType<Component>().Concat(this.items.Values.OfType<Grid>().SelectMany(x => x.Components)); } }
 
         public Grid()
         {
